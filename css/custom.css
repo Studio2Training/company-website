@@ -6824,3 +6824,22 @@ header.main-header .header-sticky.active{
         margin-top: 80px;
     }
 }
+
+/* Mobile only */
+@media (max-width: 767px) {
+    .mobile-mt-120 {
+        margin-top: 80px;
+    }
+}
+
+
+@media (max-width: 576px) {
+    .page-header-box {
+       margin-top: 50px;
+    }
+}
+@media (max-width: 768px) {
+    .page-header-box {
+        margin-top: 50px;
+    }
+}
