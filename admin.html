@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Testimonials Management</title>
+    <link rel="shortcut icon" type="image/x-icon" href="img/logocircle-modified.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Epilogue:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'DM Sans', sans-serif;
+        }
+        .star-display {
+            color: #000;
+        }
+        .star-empty {
+            color: #e5e7eb;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.3s ease-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+    <!-- Login Screen -->
+    <div id="loginScreen" class="min-h-screen flex items-center justify-center px-4">
+        <div class="max-w-md w-full">
+            <div class="bg-white rounded-2xl shadow-xl p-8 md:p-10 border border-gray-200">
+                <div class="text-center mb-8">
+                    <h1 class="text-3xl font-bold text-black mb-2">Admin Portal</h1>
+                    <p class="text-gray-600">Testimonials Management</p>
+                </div>
+                
+                <form id="loginForm" class="space-y-6">
+                    <div>
+                        <label for="username" class="block text-sm font-semibold text-black mb-2">Username</label>
+                        <input 
+                            type="text" 
+                            id="username" 
+                            required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition"
+                            placeholder="Enter username"
+                        >
+                    </div>
+                    
+                    <div>
+                        <label for="password" class="block text-sm font-semibold text-black mb-2">Password</label>
+                        <input 
+                            type="password" 
+                            id="password" 
+                            required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition"
+                            placeholder="Enter password"
+                        >
+                    </div>
+                    
+                    <div id="loginError" class="hidden text-red-600 text-sm bg-red-50 px-4 py-2 rounded-lg border border-red-200"></div>
+                    
+                    <button 
+                        type="submit"
+                        class="w-full bg-black text-white font-semibold py-3 px-6 rounded-lg hover:bg-gray-800 transition duration-300 shadow-lg hover:shadow-xl"
+                    >
+                        Sign In
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="adminDashboard" class="hidden min-h-screen">
+        <!-- Header -->
+        <header class="bg-white border-b border-gray-200 sticky top-0 z-10 shadow-sm">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h1 class="text-2xl font-bold text-black">Testimonials Management</h1>
+                        <p class="text-sm text-gray-600 mt-1">Studio2Training Admin Panel</p>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="text-right hidden sm:block">
+                            <p class="text-sm font-semibold text-black" id="adminName">Admin</p>
+                            <p class="text-xs text-gray-500">Last updated: <span id="lastUpdated">--</span></p>
+                        </div>
+                        <button 
+                            id="logoutBtn"
+                            class="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition"
+                        >
+                            Logout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            
+            <!-- Stats Bar -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+                <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-gray-600">Total</p>
+                            <p class="text-3xl font-bold text-black mt-1" id="totalCount">0</p>
+                        </div>
+                        <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">
+                            <span class="text-2xl">📝</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-gray-600">Published</p>
+                            <p class="text-3xl font-bold text-black mt-1" id="approvedCount">0</p>
+                        </div>
+                        <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">
+                            <span class="text-2xl">✓</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-gray-600">Awaiting</p>
+                            <p class="text-3xl font-bold text-black mt-1" id="pendingCount">0</p>
+                        </div>
+                        <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">
+                            <span class="text-2xl">⏳</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <div class="bg-white rounded-xl p-4 mb-6 border border-gray-200 shadow-sm flex flex-col sm:flex-row gap-3 justify-between items-start sm:items-center">
+                <div class="flex gap-2">
+                    <button id="filterAll" class="filter-btn px-4 py-2 rounded-lg text-sm font-medium transition bg-black text-white">
+                        All
+                    </button>
+                    <button id="filterApproved" class="filter-btn px-4 py-2 rounded-lg text-sm font-medium transition bg-gray-100 text-gray-700 hover:bg-gray-200">
+                        Published
+                    </button>
+                    <button id="filterPending" class="filter-btn px-4 py-2 rounded-lg text-sm font-medium transition bg-gray-100 text-gray-700 hover:bg-gray-200">
+                        Awaiting
+                    </button>
+                </div>
+                <button 
+                    id="refreshBtn"
+                    class="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition flex items-center gap-2"
+                >
+                    <span>↻</span> Refresh
+                </button>
+            </div>
+
+            <!-- Loading State -->
+            <div id="loadingState" class="text-center py-12">
+                <div class="inline-block w-8 h-8 border-4 border-gray-200 border-t-black rounded-full animate-spin"></div>
+                <p class="text-gray-600 mt-4">Loading testimonials...</p>
+            </div>
+
+            <!-- Testimonials Container -->
+            <div id="testimonialsContainer" class="hidden space-y-4">
+                <!-- Testimonial cards will be inserted here -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="hidden text-center py-16">
+                <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span class="text-3xl">📭</span>
+                </div>
+                <p class="text-gray-600 text-lg">No testimonials found</p>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        // Configuration - Update these with your actual Google Apps Script URLs
+        const CONFIG = {
+            // Replace with your Google Apps Script Web App URL for fetching data
+            FETCH_URL: "https://script.google.com/macros/s/AKfycbw9l-FzKgR16KUBWFewq4tarBDMv7IQj9a0z18nhJ-fp8ypGJCQSh6vr1_S6KrG7m4/exec",
+            // Replace with your Google Apps Script Web App URL for updates
+            UPDATE_URL: "https://script.google.com/macros/s/AKfycbw9l-FzKgR16KUBWFewq4tarBDMv7IQj9a0z18nhJ-fp8ypGJCQSh6vr1_S6KrG7m4/exec",
+            // Simple admin credentials (in production, use proper backend auth)
+            ADMIN_USERNAME: 'admin',
+            ADMIN_PASSWORD: 'admin'
+        };
+
+        let testimonials = [];
+        let currentFilter = 'all';
+
+        // Login Handler
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorDiv = document.getElementById('loginError');
+
+            if (username === CONFIG.ADMIN_USERNAME && password === CONFIG.ADMIN_PASSWORD) {
+                localStorage.setItem('adminLoggedIn', 'true');
+                localStorage.setItem('adminUsername', username);
+                showDashboard();
+            } else {
+                errorDiv.textContent = 'Invalid credentials. Please try again.';
+                errorDiv.classList.remove('hidden');
+            }
+        });
+
+        // Logout Handler
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            localStorage.removeItem('adminLoggedIn');
+            localStorage.removeItem('adminUsername');
+            location.reload();
+        });
+
+        // Check login state on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            if (localStorage.getItem('adminLoggedIn') === 'true') {
+                showDashboard();
+            }
+        });
+
+        function showDashboard() {
+            document.getElementById('loginScreen').classList.add('hidden');
+            document.getElementById('adminDashboard').classList.remove('hidden');
+            document.getElementById('adminName').textContent = localStorage.getItem('adminUsername') || 'Admin';
+            loadTestimonials();
+        }
+
+        // Fetch testimonials from Google Sheets
+        async function loadTestimonials() {
+            document.getElementById('loadingState').classList.remove('hidden');
+            document.getElementById('testimonialsContainer').classList.add('hidden');
+            document.getElementById('emptyState').classList.add('hidden');
+
+            try {
+                // Sample data structure - replace with actual fetch from Google Apps Script
+                const response = await fetch(CONFIG.FETCH_URL);
+                testimonials = await response.json();
+
+                // DEMO DATA - Replace with actual API call
+                // DEMO DATA - Replace with actual API call
+                // testimonials = [];
+
+                    
+
+                updateLastUpdated();
+                updateStats();
+                renderTestimonials();
+            } catch (error) {
+                console.error('Error loading testimonials:', error);
+                alert('Failed to load testimonials. Please check your configuration.');
+            }
+
+            document.getElementById('loadingState').classList.add('hidden');
+        }
+
+        function updateLastUpdated() {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+            document.getElementById('lastUpdated').textContent = timeStr;
+        }
+
+        function updateStats() {
+            const total = testimonials.length;
+            const approved = testimonials.filter(t => t.status === 'APPROVED').length;
+            const pending = testimonials.filter(t => t.status === 'PENDING').length;
+
+            document.getElementById('totalCount').textContent = total;
+            document.getElementById('approvedCount').textContent = approved;
+            document.getElementById('pendingCount').textContent = pending;
+        }
+
+        function renderTestimonials() {
+            const container = document.getElementById('testimonialsContainer');
+            const filtered = currentFilter === 'all' 
+                ? testimonials 
+                : testimonials.filter(t => t.status === currentFilter.toUpperCase());
+
+            if (filtered.length === 0) {
+                container.classList.add('hidden');
+                document.getElementById('emptyState').classList.remove('hidden');
+                return;
+            }
+
+            container.innerHTML = filtered.map(t => createTestimonialCard(t)).join('');
+            container.classList.remove('hidden');
+            document.getElementById('emptyState').classList.add('hidden');
+        }
+
+        function createTestimonialCard(testimonial) {
+            const stars = '★'.repeat(testimonial.rating) + '☆'.repeat(5 - testimonial.rating);
+            const statusColor = testimonial.status === 'APPROVED' 
+                ? 'bg-gray-900 text-white' 
+                : 'bg-gray-200 text-gray-700';
+
+            return `
+                <div class="bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition fade-in">
+                    <div class="p-6">
+                        <!-- Header -->
+                        <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
+                            <div class="flex-1">
+                                <div class="flex items-start gap-3">
+                                    <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                        <span class="text-xl font-bold text-gray-700">${testimonial.name.charAt(0)}</span>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-lg font-bold text-black">${testimonial.name}</h3>
+                                        <p class="text-sm text-gray-600">${testimonial.place}</p>
+                                        ${testimonial.designation ? `<p class="text-sm text-gray-500 italic">${testimonial.designation}</p>` : ''}
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="${statusColor} px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide">
+                                ${testimonial.status === 'APPROVED' ? 'Published' : 'Awaiting'}
+                            </span>
+                        </div>
+
+                        <!-- Details -->
+                        <div class="grid grid-cols-2 gap-4 mb-4 pb-4 border-b border-gray-100">
+                            <div>
+                                <p class="text-xs text-gray-500 uppercase tracking-wide mb-1">Mode</p>
+                                <p class="text-sm font-semibold text-black">${testimonial.mode}</p>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500 uppercase tracking-wide mb-1">Rating</p>
+                                <p class="text-lg font-bold" style="letter-spacing: 2px;">
+                                    ${stars.split('').map((s, i) => 
+                                        `<span class="${i < testimonial.rating ? 'star-display' : 'star-empty'}">${s}</span>`
+                                    ).join('')}
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Review -->
+                        <div class="mb-6">
+                            <p class="text-xs text-gray-500 uppercase tracking-wide mb-2">Review</p>
+                            <p class="text-gray-700 leading-relaxed">${testimonial.review}</p>
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="flex flex-wrap gap-2">
+                            <button 
+                                onclick="updateStatus(${testimonial.rowId}, 'APPROVED')"
+                                class="px-4 py-2 bg-black text-white rounded-lg text-sm font-medium hover:bg-gray-800 transition ${testimonial.status === 'APPROVED' ? 'opacity-50 cursor-not-allowed' : ''}"
+                                ${testimonial.status === 'APPROVED' ? 'disabled' : ''}
+                            >
+                                ✓ Publish
+                            </button>
+                            <button 
+                                onclick="updateStatus(${testimonial.rowId}, 'PENDING')"
+                                class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-300 transition ${testimonial.status === 'PENDING' ? 'opacity-50 cursor-not-allowed' : ''}"
+                                ${testimonial.status === 'PENDING' ? 'disabled' : ''}
+                            >
+                                ⏸ Hold
+                            </button>
+                            <button 
+                                onclick="deleteTestimonial(${testimonial.rowId})"
+                                class="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-50 transition ml-auto"
+                            >
+                                🗑 Delete
+                            </button>
+                        </div>
+
+                        <!-- Timestamp -->
+                        <div class="mt-4 pt-4 border-t border-gray-100">
+                            <p class="text-xs text-gray-400">Submitted: ${new Date(testimonial.timestamp).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Update testimonial status
+        async function updateStatus(rowId, newStatus) {
+        if (!confirm(`Are you sure you want to ${newStatus === 'APPROVED' ? 'publish' : 'hold'} this testimonial?`)) {
+            return;
+        }
+
+        try {
+            await fetch(CONFIG.UPDATE_URL, {
+            method: "POST",
+            body: JSON.stringify({
+                rowId,
+                status: newStatus
+            })
+            });
+
+            const t = testimonials.find(t => t.rowId === rowId);
+            if (t) t.status = newStatus;
+
+            updateStats();
+            renderTestimonials();
+        } catch {
+            alert("Failed to update status");
+        }
+        }
+
+
+        // Delete testimonial
+        async function deleteTestimonial(rowId) {
+        if (!confirm("This will permanently delete the testimonial. Continue?")) {
+            return;
+        }
+
+        try {
+            await fetch(CONFIG.UPDATE_URL, {
+            method: "POST",
+            body: JSON.stringify({
+                rowId,
+                action: "delete"
+            })
+            });
+
+            testimonials = testimonials.filter(t => t.rowId !== rowId);
+            updateStats();
+            renderTestimonials();
+        } catch {
+            alert("Failed to delete testimonial");
+        }
+        }
+
+
+        // Filter handlers
+        document.getElementById('filterAll').addEventListener('click', () => setFilter('all'));
+        document.getElementById('filterApproved').addEventListener('click', () => setFilter('approved'));
+        document.getElementById('filterPending').addEventListener('click', () => setFilter('pending'));
+
+        function setFilter(filter) {
+            currentFilter = filter;
+            
+            // Update button styles
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('bg-black', 'text-white');
+                btn.classList.add('bg-gray-100', 'text-gray-700', 'hover:bg-gray-200');
+            });
+            
+            const activeBtn = document.getElementById(`filter${filter.charAt(0).toUpperCase() + filter.slice(1)}`);
+            activeBtn.classList.remove('bg-gray-100', 'text-gray-700', 'hover:bg-gray-200');
+            activeBtn.classList.add('bg-black', 'text-white');
+            
+            renderTestimonials();
+        }
+
+        // Refresh handler
+        document.getElementById('refreshBtn').addEventListener('click', () => {
+            loadTestimonials();
+        });
+    </script>
+
+</body>
+</html>

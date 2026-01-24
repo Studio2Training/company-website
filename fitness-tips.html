@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+	<!-- Meta -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Awaiken">
+	<!-- Page Title -->
+    <title>Studio2Training</title>
+	<!-- Favicon Icon -->
+	<link rel="shortcut icon" type="image/x-icon" href="img/logocircle-modified.png">
+	<!-- Google Fonts Css-->
+	<link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=Epilogue:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet">
+	<!-- Bootstrap Css -->
+	<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<!-- SlickNav Css -->
+	<link href="css/slicknav.min.css" rel="stylesheet">
+	<!-- Swiper Css -->
+	<link rel="stylesheet" href="css/swiper-bundle.min.css">
+	<!-- Font Awesome Icon Css-->
+	<link href="css/all.min.css" rel="stylesheet" media="screen">
+	<!-- Animated Css -->
+	<link href="css/animate.css" rel="stylesheet">
+    <!-- Magnific Popup Core Css File -->
+	<link rel="stylesheet" href="css/magnific-popup.css">
+	<!-- Mouse Cursor Css File -->
+	<link rel="stylesheet" href="css/mousecursor.css">
+	<!-- Main Custom Css -->
+	<link href="css/custom.css" rel="stylesheet" media="screen">
+</head>
+<!-- Program Detail Modal -->
+<div class="modal fade" id="programModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="programModalTitle"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body" id="programModalBody">
+                <!-- Dynamic content loads here -->
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<body>
+    <!-- Preloader Start -->
+    <div class="preloader">
+        <div class="loading-container">
+            <div class="loading"></div>
+            <div id="loading-icon"><img src="img/loader.png" alt=""></div>
+        </div>
+    </div>
+    <!-- Preloader End -->
+    <!-- Header Start -->
+    <header class="main-header bg-section">
+        <div class="header-sticky">
+            <nav class="navbar navbar-expand-lg">
+                <div class="container">
+                    <!-- Logo Start -->
+                    <a class="navbar-brand d-flex flex-column align-items-end" href="index.html">
+                        <img src="img/loader.png" alt="Logo" width="200">
+                        <small class="text-white fw-bold mt-1">
+                            by Deepika Badhri
+                        </small>
+                    </a>
+                    <!-- Logo End -->
+                    <!-- Main Menu Start -->
+                    <div class="collapse navbar-collapse main-menu">
+                        <div class="nav-menu-wrapper">
+                            <ul class="navbar-nav mr-auto" id="menu">
+                                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                                <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                                <li class="nav-item"><a class="nav-link" href="personal-training.html">Personal Training</a></li> <!-- Adjusted from Services -->
+                                <li class="nav-item"><a class="nav-link" href="fitness-tips.html">Fitness Tips</a></li> <!-- Adjusted from Blog -->
+                                <li class="nav-item"><a class="nav-link" href="testimonials.html">Testimonials</a></li>
+                                <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                                <li class="nav-item highlighted-menu"><a class="nav-link" href="book-assessment.html">Book Free Assessment</a></li> <!-- Adjusted -->
+                            </ul>
+                        </div>
+                        <!-- Header Btn Start -->
+                        <div class="header-btn">
+                            <a href="book-assessment.html" class="btn-default btn-highlighted">Book Free Assessment</a>
+                        </div>
+                        <!-- Header Btn End -->
+                    </div>
+                    <!-- Main Menu End -->
+                    <div class="navbar-toggle"></div>
+                </div>
+            </nav>
+            <div class="responsive-menu"></div>
+        </div>
+    </header>
+    <!-- Header End -->
+
+    <!-- Page Header Start -->
+    <div class="page-header bg-section dark-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Page Header Box Start -->
+                    <div class="page-header-box">
+                        <h1 class="text-anime-style-3" data-cursor="-opaque">Overview page</h1>
+                        
+                    </div>
+                    <!-- Page Header Box End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+
+    <!-- Page Programs Start -->
+    <div class="page-programs">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="program-item wow fadeInUp">
+                        <div class="program-image">
+                            <figure class="image-anime">
+                                <img src="img/fitness-tips-page/To lose weight.jpg" alt="">
+                            </figure>
+                        </div>
+
+                        <div class="program-body">
+                            <div class="program-content">
+                                <h3>To Lose Weight</h3>
+                            </div>
+
+                            <div class="program-readmore-btn">
+                                <button 
+                                    class="btn-default btn-highlighted"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#programModal"
+                                    data-title="To Lose Weight"
+                                    data-content="
+                                    <div class='container-fluid px-2'>
+
+                                        <h6 class='fw-bold mb-3'>To Lose Weight</h6>
+
+                                        <p class='mb-3'>
+                                            To lose weight, you must eat slightly fewer calories than your body
+                                            burns each day. This difference is called a <strong>calorie deficit</strong>.
+                                        </p>
+
+                                        <ul class='ps-3 mb-3'>
+                                            <li class='mb-2'>To lose <strong>1 kg of body weight</strong>, you need a
+                                                <strong>7,700 calorie deficit</strong></li>
+                                            <li>To lose <strong>1 kg per week</strong>, create a
+                                                <strong>1,000 calorie deficit per day</strong></li>
+                                        </ul>
+
+                                        <p class='mb-3'>
+                                            <strong>Example:</strong> If your body burns 2,800 calories per day
+                                            (through daily activities and exercise), consuming about
+                                            <strong>1,800 calories</strong> will create a 1,000 calorie deficit.
+                                        </p>
+
+                                        <h6 class='fw-semibold mt-4 mb-3'>
+                                            How many calories should you eat per day?
+                                        </h6>
+
+                                        <ul class='ps-3 mb-4'>
+                                            <li class='mb-2'>
+                                                Step 1: Calculate your daily calorie burn using a calorie calculator
+                                            </li>
+                                            <li>
+                                                Step 2: Eat 1,000 calories less than your daily burn
+                                            </li>
+                                        </ul>
+
+                                        <h6 class='fw-semibold mb-2'>Sample calculation</h6>
+
+                                        <p class='mb-2'>
+                                            <strong>Profile:</strong> Female, 30 years, 5’3”, 170 lbs,
+                                            very active lifestyle
+                                        </p>
+
+                                        <ul class='ps-3 mb-3'>
+                                            <li class='mb-2'>2,519 calories/day → maintain weight</li>
+                                            <li class='mb-2'>2,019 calories/day → lose 1 lb per week</li>
+                                            <li>1,519 calories/day → lose 1 kg per week</li>
+                                        </ul>
+
+                                        <p class='text-muted small'>
+                                            Consistency with calorie control, balanced nutrition, and regular exercise
+                                            is the key to sustainable weight loss.
+                                        </p>
+
+                                    </div>
+                                    ">
+                                    Read More
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="program-item wow fadeInUp">
+                        <div class="program-image">
+                            <figure class="image-anime">
+                                <img src="img/fitness-tips-page/Jumping rope.jpg" alt="">
+                            </figure>
+                        </div>
+
+                        <div class="program-body">
+                            <div class="program-content">
+                                <h3>Jumping rope</h3>
+                            </div>
+
+                            <div class="program-readmore-btn">
+                                <button 
+                                    class="btn-default btn-highlighted"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#programModal"
+                                    data-title="Jumping Rope"
+                                    data-content="
+                                    <div class='container-fluid px-2'>
+
+                                        <h6 class='fw-bold mb-3'>Jumping Rope</h6>
+
+                                        <p class='mb-3'>
+                                            Jumping rope is a <strong>cost-effective, portable, and powerful calorie burner</strong>.
+                                            It burns more calories per minute than most cardio exercises — you would need to
+                                            run an eight-minute mile to match the calorie burn of rope jumping.
+                                        </p>
+
+                                        <p class='mb-3'>
+                                            It strengthens both the upper and lower body and adds variety to your workout routine.
+                                            When performed with proper form, it places <strong>less impact on joints than jogging</strong>.
+                                        </p>
+
+                                        <h6 class='fw-semibold mb-2'>Beginner approach</h6>
+
+                                        <ul class='ps-3 mb-3'>
+                                            <li class='mb-2'>Start without a rope if you’re new to jumping exercises</li>
+                                            <li class='mb-2'>Begin with 30 jumps × 10 sets (300 jumps total)</li>
+                                            <li class='mb-2'>Take a 40-second rest between each set</li>
+                                            <li>Gradually increase repetitions before switching to a rope</li>
+                                        </ul>
+
+                                        <p class='mb-3'>
+                                            Wearing an abdominal belt can provide back support and help shape the waistline
+                                            during workouts.
+                                        </p>
+
+                                        <p class='mb-3'>
+                                            A clean diet combined with <strong>30 minutes of jogging or running</strong> and
+                                            <strong>15 minutes of jumping rope</strong> can burn approximately
+                                            <strong>900 calories</strong>.
+                                        </p>
+
+                                        <p class='text-muted small'>
+                                            Wear properly fitted athletic or cross-training shoes.
+                                            Consult a physician before starting if you have joint pain or medical concerns.
+                                        </p>
+
+                                    </div>
+                                    ">
+                                    Read More
+                                </button>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="program-item wow fadeInUp">
+                        <div class="program-image">
+                            <figure class="image-anime">
+                                <img src="img/fitness-tips-page/Walking vs Jogging.jpg" alt="">
+                            </figure>
+                        </div>
+
+                        <div class="program-body">
+                            <div class="program-content">
+                                <h3>Walking vs Jogging</h3>
+                            </div>
+
+                            <div class="program-readmore-btn">
+                                <button 
+                                    class="btn-default btn-highlighted"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#programModal"
+                                    data-title="Walking vs Jogging"
+                                    data-content="
+                                    <div class='container-fluid px-2'>
+
+                                        <h6 class='fw-bold mb-3'>Walking vs Jogging</h6>
+
+                                        <p class='mb-3'>
+                                            <strong>60 minutes of walking</strong> is roughly equivalent to
+                                            <strong>45 minutes of brisk walking</strong>,
+                                            <strong>30 minutes of jogging</strong>, or
+                                            <strong>15 minutes of running</strong>.
+                                        </p>
+
+                                        <p class='mb-3'>
+                                            The key takeaway is simple: the harder you work, the more calories
+                                            you burn. Jogging burns more calories per minute than walking,
+                                            making it more effective for weight loss.
+                                        </p>
+
+                                        <h6 class='fw-semibold mb-2'>Beginner approach</h6>
+                                        <p class='mb-3'>
+                                            For beginners who walk on a treadmill for longer periods,
+                                            try jogging at least <strong>4 days a week</strong>.
+                                            Start gradually by alternating walking and jogging.
+                                        </p>
+
+                                        <ul class='ps-3 mb-3'>
+                                            <li class='mb-2'>Walk for 2 minutes, jog for 1 minute</li>
+                                            <li class='mb-2'>Cool down, then repeat the cycle</li>
+                                            <li>Gradually increase jogging duration over time</li>
+                                        </ul>
+
+                                        <p class='mb-3'>
+                                            Though it may feel tiring initially, consistency helps build
+                                            <strong>fat loss, stronger muscles, and better stamina</strong>.
+                                            Maintaining an upright posture while jogging is essential.
+                                        </p>
+
+                                        <p class='text-muted small'>
+                                            <strong>Note:</strong> People with pain or medical discomfort
+                                            should consult a physician before starting jogging or running.
+                                        </p>
+
+                                    </div>
+                                    ">
+                                    Read More
+                                </button>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="program-item wow fadeInUp">
+                        <div class="program-image">
+                            <figure class="image-anime">
+                                <img src="img/fitness-tips-page/Goodness of Tomato Juice.jpg" alt="">
+                            </figure>
+                        </div>
+
+                        <div class="program-body">
+                            <div class="program-content">
+                                <h3>Goodness of Tomato Juice</h3>
+                            </div>
+
+                            <div class="program-readmore-btn">
+                                <button 
+                                    class="btn-default btn-highlighted"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#programModal"
+                                    data-title="Goodness of Tomato Juice"
+                                    data-content="
+                                    <div class='container-fluid px-2'>
+
+                                        <h6 class='fw-bold mb-3'>Goodness of Tomato Juice</h6>
+
+                                        <p class='mb-3'>
+                                            Tomato juice is a <strong>natural fat burner</strong> that helps
+                                            boost metabolism and support healthy weight management.
+                                        </p>
+
+                                        <h6 class='fw-semibold mb-2'>How to prepare</h6>
+                                        <ul class='ps-3 mb-3'>
+                                            <li class='mb-2'>Blend 4 fresh tomatoes with very little water</li>
+                                            <li class='mb-2'>Strain and drink it fresh</li>
+                                            <li>Add salt, pepper, or chat masala for taste</li>
+                                        </ul>
+
+                                        <p class='mb-3'>
+                                            For best results, consume tomato juice
+                                            <strong>one hour after breakfast</strong>.
+                                        </p>
+
+                                        <p class='text-muted small'>
+                                            Regular intake, along with a balanced diet and active lifestyle,
+                                            can help improve metabolism naturally.
+                                        </p>
+
+                                    </div>
+                                    ">
+                                    Read More
+                                </button>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="program-item wow fadeInUp">
+                        <div class="program-image">
+                            <figure class="image-anime">
+                                <img src="img/fitness-tips-page/Having 2tbsp of Curd.jpg" alt="">
+                            </figure>
+                        </div>
+
+                        <div class="program-body">
+                            <div class="program-content">
+                                <h3>Having 2tbsp of Curd</h3>
+                            </div>
+
+                            <div class="program-readmore-btn">
+                                <button 
+                                    class="btn-default btn-highlighted"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#programModal"
+                                    data-title="Having 2 tbsp of Curd"
+                                    data-content="
+                                    <div class='container-fluid px-2'>
+
+                                        <h6 class='fw-bold mb-3'>Having 2 tbsp of Curd</h6>
+
+                                        <p class='mb-3'>
+                                            Consuming curd soon after vitamin-rich fruits or vegetables helps improve
+                                            the absorption of vitamins due to the presence of <strong>probiotics</strong>.
+                                        </p>
+
+                                        <p class='mb-3'>
+                                            Vitamins play a key role in <strong>boosting metabolism</strong> and
+                                            signaling the body to burn fat. Among them,
+                                            <strong>Vitamin D</strong> and <strong>Vitamin B12</strong> are especially
+                                            important for weight loss.
+                                        </p>
+
+                                        <p class='mb-4'>
+                                            This is why dieticians recommend fruits or salads between lunch and dinner.
+                                            It helps keep the body in <strong>fat-burning mode</strong> and prevents
+                                            unhealthy snacking.
+                                        </p>
+
+                                        <p class='text-muted small'>
+                                            Replacing junk food with vitamin- and mineral-rich snacks supports
+                                            better metabolism and long-term weight management.
+                                        </p>
+
+                                    </div>
+                                    ">
+                                    Read More
+                                </button>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="program-item wow fadeInUp">
+                        <div class="program-image">
+                            <figure class="image-anime">
+                                <img src="img/fitness-tips-page/Will Drinking Lemon Water help you loose weight.jpg" alt="">
+                            </figure>
+                        </div>
+
+                        <div class="program-body">
+                            <div class="program-content">
+                                <h3>Will Drinking Lemon Water help you loose weight?</h3>
+                            </div>
+
+                            <div class="program-readmore-btn">
+                                <button 
+                                    class="btn-default btn-highlighted"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#programModal"
+                                    data-title="Will Drinking Lemon Water Help You Lose Weight?"
+                                    data-content="
+                                    <div class='container-fluid px-2'>
+
+                                        <h6 class='fw-bold mb-3'>Will Drinking Lemon Water Help You Lose Weight?</h6>
+
+                                        <p class='mb-3'>
+                                            Drinking lemon water alone will not magically make you lose weight.
+                                            However, it can significantly <strong>support and speed up the weight loss process</strong>
+                                            when combined with a healthy lifestyle.
+                                        </p>
+
+                                        <p class='mb-3'>
+                                            Lemon water is completely natural and adds <strong>almost zero calories</strong> to your diet.
+                                            If you replace high-calorie beverages such as sugar-loaded coffee, fruit juices,
+                                            or flavored drinks with lemon water, it creates a calorie deficit over time.
+                                        </p>
+
+                                        <p class='mb-4'>
+                                            Even adding ingredients like mint leaves, ginger, or ice cubes keeps the drink refreshing
+                                            without increasing calories. Over a period of consistent intake, this calorie reduction
+                                            contributes to gradual weight loss.
+                                        </p>
+
+                                        <h6 class='fw-semibold mt-4 mb-3'>Benefits of Lemon Water</h6>
+
+                                        <ul class='ps-3 mb-4'>
+                                            <li class='mb-2'>Helps maintain a higher metabolism rate</li>
+                                            <li class='mb-2'>Supports fat burning during daily activities</li>
+                                            <li class='mb-2'>Cleanses toxins and internal waste from the body</li>
+                                            <li class='mb-2'>Promotes quick bursts of natural energy</li>
+                                            <li>Reduces hunger cravings due to the presence of pectin fiber</li>
+                                        </ul>
+
+                                        <p class='mb-4'>
+                                            Some weight loss also occurs due to the removal of excess waste from the body,
+                                            making you feel lighter and more energized.
+                                        </p>
+
+                                        <p class='mb-4'>
+                                            For best results, always start your day with <strong>warm lemon water on an empty stomach</strong>.
+                                            Replace high-calorie juices or shakes with lemon water wherever possible.
+                                        </p>
+
+                                        <p class='text-muted small'>
+                                            <strong>Note:</strong> Lemon water is not a standalone solution for weight loss.
+                                            Real results come only when combined with calorie control, balanced nutrition,
+                                            and regular physical activity.
+                                        </p>
+
+                                    </div>
+                                    ">
+                                    Read More
+                                </button>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="program-item wow fadeInUp">
+                        <div class="program-image">
+                            <figure class="image-anime">
+                                <img src="img/fitness-tips-page/How to Use Garlic for Weight Loss.jpg" alt="">
+                            </figure>
+                        </div>
+
+                        <div class="program-body">
+                            <div class="program-content">
+                                <h3>How to Use Garlic for Weight Loss</h3>
+                            </div>
+
+                            <div class="program-readmore-btn">
+                                <button 
+                                    class="btn-default btn-highlighted"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#programModal"
+                                    data-title="How to Use Garlic for Weight Loss"
+                                    data-content="
+                                        <div class='container-fluid px-2'>
+
+                                            <h6 class='fw-bold mb-3'>How to Use Garlic for Weight Loss</h6>
+
+                                            <p class='mb-3'>
+                                                It’s one of the most versatile spices – a fat flusher, metabolic booster,
+                                                and a gentle detoxifier and energizer.
+                                            </p>
+
+                                            <p class='mb-3'>
+                                                When it comes to weight loss, garlic appears to be a miracle food.
+                                                It contains a compound called <strong>Allicin</strong>, which has antibacterial
+                                                properties and helps reduce unhealthy fats and cholesterol.
+                                            </p>
+
+                                            <p class='mb-4'>
+                                                Take a few garlic cloves, crush them, and allow them to sit in the air
+                                                for about <strong>10 minutes</strong> before using. Raw garlic needs to
+                                                interact with oxygen to activate its beneficial compounds.
+                                            </p>
+
+                                            <h6 class='fw-semibold mt-4 mb-3'>How to consume</h6>
+
+                                            <ul class='ps-3 mb-4'>
+                                                <li class='mb-2'>Chew two or three garlic cloves every morning.</li>
+                                                <li class='mb-2'>Drink a glass of warm lemon water after that.</li>
+                                                <li>This helps accelerate weight loss and improves blood circulation.</li>
+                                            </ul>
+
+                                            <p class='mb-4'>
+                                                Alternatively, you can chew a few dry-fried garlic cloves before bedtime.
+                                                Another option is to boil a few cloves in milk and drink it before sleeping.
+                                            </p>
+
+                                            <p class='mb-4'>
+                                                To remove garlic aftertaste, chew fresh parsley, mint leaves,
+                                                a small amount of citrus peel, or fennel seeds.
+                                                Brushing with mint-flavored toothpaste also helps.
+                                            </p>
+
+                                            <h6 class='fw-semibold mt-4 mb-3'>My daily diet routine includes</h6>
+
+                                            <ul class='ps-3 mb-4'>
+                                                <li class='mb-2'>Warm lemon water on an empty stomach</li>
+                                                <li class='mb-2'>Tomato juice one hour after breakfast</li>
+                                                <li class='mb-2'>A big bowl of fruits between lunch and dinner</li>
+                                                <li>A few cloves of garlic</li>
+                                            </ul>
+
+                                            <p class='text-muted small'>
+                                                <strong>Note:</strong> Lemon water and garlic are not magic supplements.
+                                                Weight loss happens only when combined with proper calorie control,
+                                                balanced diet, and regular workouts.
+                                            </p>
+
+                                        </div>
+                                        "
+                                        >
+
+                                    Read More
+                                </button>
+                            </div>
+
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Page Programs End -->
+
+
+    <script>
+        const programModal = document.getElementById('programModal');
+
+        programModal.addEventListener('show.bs.modal', function (event) {
+            const button = event.relatedTarget;
+
+            const title = button.getAttribute('data-title');
+            const content = button.getAttribute('data-content');
+
+            document.getElementById('programModalTitle').innerHTML = title;
+            document.getElementById('programModalBody').innerHTML = content;
+        });
+    </script>
+
+
+    <!-- Main Footer Section Start -->
+    <footer class="main-footer bg-section dark-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Main Footer Box Start -->
+                    <div class="main-footer-box">
+                        <!-- Footer About Start -->
+                        <div class="footer-about">
+                            <!-- Footer Logo Start -->
+                            <div class="footer-logo">
+                                <img src="img/loader.png" alt=""> <!-- Update logo -->
+                            </div>
+                            <!-- Footer Logo End -->
+                            <!-- About Footer Content Start -->
+                            <div class="about-footer-content">
+                                <p>Studio2Training - Chennai’s exclusive women-focused fitness studio dedicated to helping you build strength, confidence, and sustainable wellness inside and out.</p>
+                            </div>
+                            <!-- About Footer Content End -->
+                            <!-- Footer Content Link Start -->
+                            <div class="footer-contact-list">
+                                <ul>
+                                    <li><a href="tel:+919884027834">+91 98840 27834</a></li>
+                                    <li><a href="mailto:deepika0603@gmail.com">deepika0603@gmail.com</a></li>
+                                </ul>
+                            </div>
+                            <!-- Footer Content Link End -->
+                            <!-- Footer Menu Start -->
+                            <div class="footer-menu">
+                                <ul>
+                                    <li><a href="index.html">home</a></li>
+                                    <li><a href="about.html">about us</a></li>
+                                    <li><a href="personal-training.html">personal training</a></li>
+                                    <li><a href="fitness-tips.html">fitness tips</a></li>
+                                    <li><a href="testimonials.html">testimonials</a></li>
+                                    <li><a href="contact.html">contact</a></li>
+                                </ul>
+                            </div>
+                            <!-- Footer Menu End -->
+                        </div>
+                        <!-- Footer About End -->
+                        <!-- Footer Links Box Start -->
+                        <div class="footer-links-box">
+                            <!-- Footer Links Start -->
+                            <div class="footer-links">
+                                <h3>Specializations</h3>
+                                <ul>
+                                    <li><a href="personal-training.html">Kickboxing</a></li>
+                                    <li><a href="personal-training.html">Strength Endurance</a></li>
+                                    <li><a href="personal-training.html">Crossfit Workouts</a></li>
+                                    <li><a href="personal-training.html">Muscle Toning</a></li>
+                                    <li><a href="personal-training.html">Weight Management</a></li>
+                                    <li><a href="personal-training.html">Stretches and Flexibility</a></li>
+                                </ul>
+                            </div>
+                            <!-- Footer Links End -->
+                            <!-- Footer Links Start -->
+                            <div class="footer-links">
+                                <h3>Location</h3>
+                                <ul>
+                                    <li>Chennai, Tamil Nadu, India</li>
+                                </ul>
+                            </div>
+                            <!-- Footer Links End -->
+                            <!-- Footer Social Links Start -->
+                            <div class="footer-social-links">
+                                <span>Follow on: </span>
+                                <ul>
+                                    <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
+                                    <li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
+                                    <li><a href="https://wa.me/919884027834"><i class="fa-brands fa-whatsapp"></i></a></li> <!-- Added WhatsApp -->
+                                </ul>
+                            </div>
+                            <!-- Footer Social Links End -->
+                        </div>
+                        <!-- Footer Links Box End -->
+                    </div>
+                    <!-- Main Footer Box End -->
+                </div>
+            </div>
+        </div>
+        <!-- Footer Copyright Start -->
+        <div class="footer-copyright">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-5">
+                        <!-- Footer Copyright Text Start -->
+                        <div class="footer-copyright-text">
+                            <p>Copyright © 2026 All Rights Reserved.</p>
+                        </div>
+                        <!-- Footer Copyright Text End -->
+                    </div>
+                    <div class="col-lg-6 col-md-7">
+                        <!-- Footer Privacy Policy Start -->
+                        <div class="footer-privacy-policy">
+                            <ul>
+                                <li><a href="#">Privacy policy</a></li>
+                                <li><a href="#">Term & Conditions</a></li>
+                                <li><a href="#">help</a></li>
+                            </ul>
+                        </div>
+                        <!-- Footer Privacy Policy End -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer Copyright End -->
+    </footer>
+    <!-- Main Footer Section End -->
+
+    <!-- Jquery Library File -->
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <!-- Circle Progress Js File -->
+    <script src="js/circle-progress.min.js"></script>
+    <!-- Bootstrap js file -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Validator js file -->
+    <script src="js/validator.min.js"></script>
+    <!-- SlickNav js file -->
+    <script src="js/jquery.slicknav.js"></script>
+    <!-- Swiper js file -->
+    <script src="js/swiper-bundle.min.js"></script>
+    <!-- Counter js file -->
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <!-- Magnific js file -->
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <!-- Parallax js -->
+    <script src="js/parallaxie.js"></script>
+    <!-- MagicCursor js file -->
+    <script src="js/gsap.min.js"></script>
+    <script src="js/magiccursor.js"></script>
+    <!-- Text Effect js file -->
+    <script src="js/SplitText.js"></script>
+    <script src="js/ScrollTrigger.min.js"></script>
+    <!-- YTPlayer js File -->
+    <script src="js/jquery.mb.YTPlayer.min.js"></script>
+    <!-- Wow js file -->
+    <script src="js/wow.min.js"></script>
+    <!-- Main Custom js file -->
+    <script src="js/function.js"></script>
+</body>
+
+<!-- Mirrored from html.awaikenthemes.com/healix/programs.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 14 Jan 2026 08:38:02 GMT -->
+</html>
