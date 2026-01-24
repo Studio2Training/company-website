@@ -386,7 +386,7 @@ body{
 
 .bg-section.dark-section{
 	position: relative;
-	background: url('../images/hero-bg-gradiant-shape.png'), var(--accent-secondary-color);
+	/* background: url('../images/hero-bg-gradiant-shape.png'), var(--accent-secondary-color); */
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: cover;
@@ -400,11 +400,11 @@ body{
 	bottom: 0;
 	right: 0;
 	background: radial-gradient(
-			40% 55% at 50% 50%,
-			rgba(11, 11, 15, 0) 0%,
-			rgba(11, 11, 15, 0.85) 100%
-	)
-;
+		40% 55% at 50% 50%,
+		rgba(255, 105, 180, 0.6) 0%,
+		rgba(139, 0, 75, 0.95) 100%
+	);
+
 	border-radius: 20px;
 	height: 100%;
 	width: 100%;
