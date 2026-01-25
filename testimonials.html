@@ -166,33 +166,55 @@
     </div>
     <style>
         .btn-white-black {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 14px 34px;
-        font-size: 15px;
-        font-weight: 600;
-        letter-spacing: 0.5px;
-        color: #000;
-        background: #fff;
-        border: 2px solid #000;
-        border-radius: 12px;
-        text-decoration: none;
-        transition: all 0.35s ease;
-        position: relative;
-        overflow: hidden;
-    }
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 34px;
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: #fff;
+            background: linear-gradient(135deg, #ff4ecd, #ff7ad9);
+            border: 2px solid rgba(255, 78, 205, 0.6);
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.35s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(255, 78, 205, 0.35);
+        }
 
-    .btn-white-black:hover {
-        background: #000;
-        color: #fff;
-        transform: translateY(-2px);
-        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    }
+        .btn-white-black::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -75%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(
+                120deg,
+                transparent,
+                rgba(255,255,255,0.5),
+                transparent
+            );
+            transform: skewX(-25deg);
+            transition: 0.6s;
+        }
 
-    .btn-white-black:active {
-        transform: scale(0.96);
-    }
+        .btn-white-black:hover::before {
+            left: 130%;
+        }
+
+        .btn-white-black:hover {
+            background: linear-gradient(135deg, #ff2bbf, #ff63d1);
+            transform: translateY(-3px);
+            box-shadow: 0 14px 35px rgba(255, 78, 205, 0.55);
+        }
+
+        .btn-white-black:active {
+            transform: scale(0.96);
+            box-shadow: 0 6px 18px rgba(255, 78, 205, 0.45);
+        }
 
     </style>
 
