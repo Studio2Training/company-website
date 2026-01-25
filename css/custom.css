@@ -2630,7 +2630,7 @@ header.main-header .header-sticky.active{
 	font-family: var(--accent-font);
 	font-size: 20px;
 	color: var(--white-color);
-	/* border: 1px solid var(--dark-divider-color); */
+	background-color: var(--accent-color);
 	border: 1px solid black;
 	border-radius: 10px;
 	padding: 9px 20px;
@@ -2639,7 +2639,7 @@ header.main-header .header-sticky.active{
 }
 
 .footer-contact-list ul li:hover{
-	border-color: var(--accent-color);
+	border-color: white;
 }
 
 .footer-contact-list a{
@@ -2649,7 +2649,7 @@ header.main-header .header-sticky.active{
 }
 
 .footer-contact-list ul li:hover a{
-	color: var(--accent-color);
+	color: white;
 }
 
 .footer-menu ul{
