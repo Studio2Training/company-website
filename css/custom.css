@@ -1,3 +1,5 @@
+
+
 /* ----------------------------------------------------------------------------------------
 * Author        : Awaiken
 * Template Name : Healix - Health Coach HTML Template
@@ -50,7 +52,7 @@
 	/* CORE */
 	--primary-color: #0B0B0F;      /* Deep neutral black */
 	--secondary-color: #FFFFFF;    /* White background */
-	--white-color: #FFFFFF;
+	--white-color: #0B0B0F;
 
 	/* TEXT */
 	--text-color: #1A1A1F;         /* Dark text on white */
@@ -85,7 +87,7 @@ body{
 	font-weight: 400;
 	line-height: 1em;
 	color: var(--text-color);
-	background: var(--white-color );
+	background: white;
 }
 
 ::-webkit-scrollbar-track{
@@ -237,7 +239,7 @@ body{
 	line-height: 1em;
 	text-transform: capitalize;
 	background: var(--accent-color);
-	color: var(--primary-color);
+	color: white;
 	border-radius: 50px;
 	padding: 18px 30px;
 	border: none;
@@ -247,7 +249,7 @@ body{
 }
 
 .btn-default:hover{
-	color: var(--white-color);
+	color: white;
 }
 
 .btn-default::after,
@@ -279,7 +281,7 @@ body{
 }
 
 .btn-default.btn-highlighted:hover{
-    color: var(--primary-color);
+    color: white;
 }
 
 .btn-default.btn-highlighted::after,
@@ -399,11 +401,17 @@ body{
 	left: 0;
 	bottom: 0;
 	right: 0;
-	background: radial-gradient(
-		40% 55% at 50% 50%,
-		rgba(255, 105, 180, 0.6) 0%,
-		rgba(139, 0, 75, 0.95) 100%
-	);
+background: radial-gradient(
+    60% 60% at 50% 40%,
+    #f8f8f8 0%,
+    #f6eef3 40%,
+    #f8f8f8 100%
+);
+
+
+    box-shadow:
+        0 8px 30px rgba(255, 105, 180, 0.18),
+        0 2px 8px rgba(255, 182, 193, 0.12);
 
 	border-radius: 20px;
 	height: 100%;
@@ -535,7 +543,7 @@ header.main-header .header-sticky.active{
 	right: 0;
 	border-radius: 0;
     transform: translateY(0);
-	background: var(--accent-secondary-color);
+	/* background: var(--accent-secondary-color); */
 	border-bottom: 1px solid var(--dark-divider-color);
 }
 
@@ -1097,7 +1105,7 @@ header.main-header .header-sticky.active{
 	left: 0;
 	width: 100%;
 	height: 0;
-	background: var(--white-color);
+	background: white;
 	z-index: 0;
 	transition: all 0.4s ease-in-out;
 }
@@ -1337,7 +1345,7 @@ header.main-header .header-sticky.active{
 
 .service-item{
 	position: relative;
-	background-color: var(--white-color);
+	background-color: white;
 	border: 1px solid var(--divider-color);
 	border-radius: 20px;
 	height: calc(100% - 30px);
@@ -1619,6 +1627,7 @@ header.main-header .header-sticky.active{
 	align-items: center;
 	justify-content: center;
 	border: 1px solid var(--white-color);
+	background-color: #0B0B0F;
 	border-radius: 50%;
 	margin-bottom: 30px;
 	transition: all 0.5s ease-in-out;
@@ -1636,6 +1645,7 @@ header.main-header .header-sticky.active{
     left: 0;
     right: 0;
     background-color: var(--accent-color);
+
     border-radius: 50%;
     height: 100%;
     width: 100%;
@@ -1655,7 +1665,7 @@ header.main-header .header-sticky.active{
 }
 
 .why-choose-item:hover .icon-box img{
-	filter: brightness(0) invert(0);
+	filter: brightness(0) invert(1);
 }
 
 .why-choose-item-content h3{
@@ -1714,8 +1724,8 @@ header.main-header .header-sticky.active{
 
 .expertise-box{
 	position: relative;
-	background: var(--white-color);
-	box-shadow: 0px 0px 30px 0px #0000000D;
+	background: white;
+	box-shadow: 0px 30px 30px 30px #0000000D;
 	border-radius: 20px;
 	margin-bottom: 30px;
 	padding: 40px;
@@ -1958,7 +1968,7 @@ header.main-header .header-sticky.active{
 
 .program-content h3{
 	font-size: 20px;
-	color: var(--white-color);
+	color: white;
 }
 
 .program-content h3 a{
@@ -2015,7 +2025,7 @@ header.main-header .header-sticky.active{
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: var(--white-color);
+    background-color: white;
     border-radius: 50%;
     height: 100%;
     width: 100%;
@@ -2082,7 +2092,7 @@ header.main-header .header-sticky.active{
 .book-appointment-box{
 	border: 1px solid var(--divider-color);
 	box-shadow: 0px 0px 30px 0px #0000000D;
-	background: var(--white-color);
+	background: white;
 	border-radius: 20px;
 	display: flex;
 	flex-wrap: wrap;
@@ -2256,7 +2266,7 @@ header.main-header .header-sticky.active{
     width: 30px;
     height: 30px;
     color: var(--primary-color);
-    background-color: var(--white-color);
+    background-color: white;
     border-radius: 5px;
 	transition: all 0.3s ease-in-out;
 }
@@ -2306,7 +2316,7 @@ header.main-header .header-sticky.active{
 .testimonial-item{
 	position: relative;
 	width: calc(50% - 15px);
-	background: var(--white-color);
+	background: white;
 	border: 1px solid var(--divider-color);
 	border-radius: 20px;
 	padding: 30px 25px;
@@ -2559,6 +2569,9 @@ header.main-header .header-sticky.active{
 .main-footer{
 	padding: 80px 0 0 0;
 	margin-bottom: 50px;
+	border: 1px solid black;
+	box-sizing: border-box;
+    overflow: hidden;
 }
 
 .main-footer-box{
@@ -2582,6 +2595,7 @@ header.main-header .header-sticky.active{
     background-color: var(--dark-divider-color);
     height: 100%;
     width: 1px;
+	border: solid 1px black;
 }
 
 .footer-logo,
@@ -2616,7 +2630,8 @@ header.main-header .header-sticky.active{
 	font-family: var(--accent-font);
 	font-size: 20px;
 	color: var(--white-color);
-	border: 1px solid var(--dark-divider-color);
+	/* border: 1px solid var(--dark-divider-color); */
+	border: 1px solid black;
 	border-radius: 10px;
 	padding: 9px 20px;
 	line-height: 1.1em;
@@ -2743,7 +2758,7 @@ header.main-header .header-sticky.active{
     align-items: center;
     width: 38px;
     height: 38px;
-    border: 1px solid var(--dark-divider-color);
+	border: 1px solid black;
     border-radius: 50%;
 	transition: all 0.3s ease-in-out;
 }
@@ -2949,7 +2964,7 @@ header.main-header .header-sticky.active{
 
 .mission-vision-item{
 	position: relative;
-	background-color: var(--white-color);
+	background-color: white;
 	border-radius: 16px;
 	padding: 24px;
 	overflow: hidden;
@@ -3327,7 +3342,7 @@ header.main-header .header-sticky.active{
 
 .our-journey-item{
 	position: relative;
-	background: var(--white-color);
+	background: white;
 	box-shadow: 0px 0px 30px 0px #0000000D;
 	border: 1px solid var(--divider-color);
 	border-radius: 30px;
@@ -3486,7 +3501,7 @@ header.main-header .header-sticky.active{
 
 .team-social-icon ul li a:hover{
 	color: var(--primary-color);
-	background: var(--white-color);	
+	background: white;	
 }
 
 .team-content{
@@ -3575,7 +3590,7 @@ header.main-header .header-sticky.active{
 	line-height: normal;
     text-transform: capitalize;
     color: var(--text-color);
-	background-color: var(--white-color);
+	background-color: white;
 	border-radius: 15px;
 	padding: 13px 40px 13px 20px;
 	overflow: hidden;
@@ -4109,7 +4124,7 @@ header.main-header .header-sticky.active{
 }
 
 .program-detail-item{
-	background: var(--white-color);
+	background: white;
 	border-radius: 15px;
 	margin-bottom: 20px;
 	padding: 20px;
@@ -4393,7 +4408,7 @@ header.main-header .header-sticky.active{
 }
 
 .team-sidebar-footer ul li a{
-    background-color: var(--white-color);
+    background-color: white;
     border-radius: 50%;
     width: 36px;
     height: 36px;
@@ -4677,7 +4692,7 @@ header.main-header .header-sticky.active{
 	font-weight: 400;
 	line-height: 1.5em;
 	color: var(--text-color);
-    background-color: var(--white-color);
+    background-color: white;
 	border: 1px solid var(--divider-color);
 	border-radius: 10px;
 	padding: 17px 20px;
