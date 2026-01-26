@@ -256,7 +256,7 @@
                             <!-- Mission Vision Item Start -->
                             <div class="mission-vision-item wow fadeInUp" data-wow-delay="0.6s">
                                 <div class="icon-box">
-                                    <img src="images/icon-our-mission.svg" alt="Deepika Badhri certified female personal trainer in Chennai">>
+                                    <img src="images/icon-our-mission.svg" alt="Deepika Badhri certified female personal trainer in Chennai">
                                 </div>
                                 <div class="mission-vision-content">
                                     <h3>Our Vision</h3>
@@ -267,7 +267,7 @@
                             <!-- Mission Vision Item Start -->
                             <div class="mission-vision-item wow fadeInUp" data-wow-delay="0.8s">
                                 <div class="icon-box">
-                                    <img src="images/icon-our-vision.svg" alt="Deepika Badhri certified female personal trainer in Chennai">>
+                                    <img src="images/icon-our-vision.svg" alt="Deepika Badhri certified female personal trainer in Chennai">
                                 </div>
                                 <div class="mission-vision-content">
                                     <h3>Our Values</h3>
@@ -278,7 +278,7 @@
                             <!-- Mission Vision Image Start -->
                             <div class="mission-vision-image">
                                 <figure class="image-anime reveal">
-                                    <img src="images/mission-vision-image.jpg" alt="Deepika Badhri certified female personal trainer in Chennai">> <!-- Replace -->
+                                    <img src="images/mission-vision-image.jpg" alt="Deepika Badhri certified female personal trainer in Chennai"> <!-- Replace -->
                                 </figure>
                             </div>
                             <!-- Mission Vision Imaeg End -->
@@ -424,17 +424,54 @@
             <div class="row align-items-center gy-5">
 
                 <!-- LEFT IMAGE -->
-                <div class="col-lg-6">
-                    <div class="expert-coaching-image text-center px-lg-5 mt-5">
+                <div class="col-lg-6 d-flex justify-content-center align-items-center">
+                    <div class="expert-coaching-image">
                         <figure class="image-anime mb-0">
                             <img 
                                 src="images/expert-coaching-image-1.jpg" 
                                 alt="Deepika Badhri certified female personal trainer in Chennai"
-                                class="img-fluid w-100 rounded shadow"
+                                class="img-fluid expert-img shadow"
+                                style="width: 500px;"
                             >
                         </figure>
                     </div>
                 </div>
+
+
+                <!-- Modification of image for mobile responsive -->
+                <style>
+                .expert-coaching-image{
+                    padding: 0;
+                    margin: 0 auto;
+                    text-align: center;
+                }
+
+                .expert-coaching-image figure{
+                    margin: 0;
+                    display: flex;
+                    justify-content: center;
+                }
+
+                .expert-coaching-image img{
+                    width: 100%;
+                    max-width: 420px;
+                    height: auto;
+                    border-radius: 14px;
+                }
+
+                @media (max-width: 768px){
+                    .expert-coaching-image img{
+                        max-width: 90%;
+                    }
+                }
+
+                @media (max-width: 576px){
+                    .expert-coaching-image img{
+                        max-width: 95%;
+                    }
+                }
+
+                </style>
 
                 <!-- RIGHT CONTENT -->
                 <div class="col-lg-6">
@@ -515,7 +552,7 @@
 
 
     <!-- Our Journey Section Start -->
-    <div class="our-journey">
+    <div class="our-journey" style="margin-top: -60px;">
         <div class="container">
             <div class="row section-row align-items-center">
                 <div class="col-lg-6">

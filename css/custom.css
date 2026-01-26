@@ -3126,23 +3126,11 @@ header.main-header .header-sticky.active{
 	padding: 100px 0;
 }
 
-.expert-coaching-image{
+/* .expert-coaching-image{
 	position: relative;
 	padding: 110px 250px 280px 25px;
 	margin-right: 20px;
-}
-
-.expert-coaching-image:before{
-	content: '';
-    position: absolute;
-    border: 20px solid var(--accent-color);
-    border-radius: 50%;
-    width: 160px;
-    height: 160px;
-    top: 50%;
-    transform: translateY(-20%);
-    right: 60px;
-}
+} */
 
 .expert-coaching-img-1,
 .expert-coaching-img-2,
@@ -5593,11 +5581,11 @@ header.main-header .header-sticky.active{
 		padding: 50px 0;
 	}
 
-	.expert-coaching-image{
-		max-width: 80%;
+	/* .expert-coaching-image{
+		max-width: 100%;
 		margin: 0 auto;
 		margin-bottom: 30px;
-	}
+	} */
 
 	.expert-coaching-body{
 		margin-bottom: 30px;
@@ -6538,18 +6526,18 @@ header.main-header .header-sticky.active{
 		font-size: 26px;
 	}
 
-	.expert-coaching-image{
+	/* .expert-coaching-image{
         max-width: 100%;
         padding: 25px 140px 175px 18px;
-    }
+    } */
 
-	.expert-coaching-image:before{
+	/* .expert-coaching-image:before{
 		border-width: 10px;
 		width: 120px;
 		height: 120px;
 		right: 30px;
 		transform: translateY(-50%);
-	}
+	} */
 
 	.expert-coaching-img-1,
 	.expert-coaching-img-2,
@@ -6858,3 +6846,4 @@ header.main-header .header-sticky.active{
         margin-top: 50px;
     }
 }
+
