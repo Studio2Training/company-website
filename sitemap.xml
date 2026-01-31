@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-    xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
-    <!-- Home -->
     <url>
         <loc>https://studio2training.in/</loc>
         <lastmod>2026-01-30</lastmod>
@@ -11,15 +9,6 @@
         <priority>1.00</priority>
     </url>
 
-    <!-- About -->
-    <url>
-        <loc>https://studio2training.in/about.html</loc>
-        <lastmod>2026-01-30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.80</priority>
-    </url>
-
-    <!-- Personal Training -->
     <url>
         <loc>https://studio2training.in/personal-training.html</loc>
         <lastmod>2026-01-30</lastmod>
@@ -27,28 +16,32 @@
         <priority>0.90</priority>
     </url>
 
-    <!-- Fitness Tips -->
-    <url>
-        <loc>https://studio2training.in/fitness-tips.html</loc>
-        <lastmod>2026-01-30</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.70</priority>
-    </url>
-
-    <!-- Testimonials -->
-    <url>
-        <loc>https://studio2training.in/testimonials.html</loc>
-        <lastmod>2026-01-30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.70</priority>
-    </url>
-
-    <!-- Contact -->
     <url>
         <loc>https://studio2training.in/contact.html</loc>
         <lastmod>2026-01-30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.85</priority>
+    </url>
+
+    <url>
+        <loc>https://studio2training.in/about.html</loc>
+        <lastmod>2026-01-30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.80</priority>
+    </url>
+
+    <url>
+        <loc>https://studio2training.in/testimonials.html</loc>
+        <lastmod>2026-01-30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.75</priority>
+    </url>
+
+    <url>
+        <loc>https://studio2training.in/fitness-tips.html</loc>
+        <lastmod>2026-01-30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.70</priority>
     </url>
 
 </urlset>
