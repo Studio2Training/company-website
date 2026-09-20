@@ -49,14 +49,13 @@ async function loadTestimonialsFromAPI() {
 document.addEventListener("DOMContentLoaded", async () => {
     console.log("Initializing testimonials...");
 
+    const loader = document.getElementById("testimonialLoading");
+
     try {
         const apiData = await loadTestimonialsFromAPI();
 
         if (apiData && apiData.length > 0) {
-            console.log("Merging Google Sheets + static data");
             testimonials = [...testimonials, ...apiData];
-        } else {
-            console.log("Using static fallback data");
         }
 
         function getTestimonialDate(testimonial) {
@@ -66,8 +65,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 testimonial.date ||
                 testimonial.Date ||
                 testimonial.createdAt ||
-                testimonial.created_at ||
-                testimonial["Timestamp"];
+                testimonial.created_at;
 
             if (!date) return 0;
 
@@ -75,26 +73,42 @@ document.addEventListener("DOMContentLoaded", async () => {
             return Number.isNaN(parsedDate) ? 0 : parsedDate;
         }
 
-        testimonials.sort((a, b) => {
-            return getTestimonialDate(b) - getTestimonialDate(a);
-        });
+        // Sort newest testimonials first
+        testimonials.sort(
+            (a, b) => getTestimonialDate(b) - getTestimonialDate(a)
+        );
 
-        console.log("Testimonials sorted by newest first");
-        console.log(`Total testimonials to display: ${testimonials.length}`);
+        // Render homepage testimonials
+        if (typeof renderHomeTestimonials === "function") {
+            renderHomeTestimonials();
+        }
 
-        // Render testimonials
-        renderTestimonials();
-
-        // Initialize pagination
-        initPagination();
+        // initPagination() already renders the main testimonials
+        if (typeof initPagination === "function") {
+            initPagination();
+        } else {
+            renderTestimonials();
+        }
 
     } catch (error) {
         console.error("Testimonials initialization failed:", error);
-    } finally {
-        // ALWAYS remove loader after rendering/failure
-        hideTestimonialsLoader();
 
-        console.log("Done!");
+        // Try to show available static testimonials
+        try {
+            if (typeof renderTestimonials === "function") {
+                renderTestimonials();
+            }
+        } catch (renderError) {
+            console.error("Testimonial rendering failed:", renderError);
+        }
+
+    } finally {
+        // Always hide the loader
+        if (loader) {
+            loader.style.display = "none";
+            loader.setAttribute("aria-hidden", "true");
+        }
+
+        console.log("Testimonial loading finished.");
     }
 });
-
