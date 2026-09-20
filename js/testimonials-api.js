@@ -47,25 +47,54 @@ async function loadTestimonialsFromAPI() {
 
 // Single initialization on DOMContentLoaded
 document.addEventListener("DOMContentLoaded", async () => {
-  console.log("Initializing testimonials...");
-  
-  // Try to load from Google Sheets
-  const apiData = await loadTestimonialsFromAPI();
-    
-  if (apiData && apiData.length > 0) {
-    console.log("Merging Google Sheets + static data");
-    testimonials = [...testimonials, ...apiData];
-  } else {
-    console.log("Using static fallback data");
-  }
+    console.log("Initializing testimonials...");
 
-  
-  console.log(`Total testimonials to display: ${testimonials.length}`);
-  
-  // Render and setup pagination
-  renderTestimonials();
-  initPagination();
-  
-  console.log("Done!");
+    try {
+        const apiData = await loadTestimonialsFromAPI();
+
+        if (apiData && apiData.length > 0) {
+            console.log("Merging Google Sheets + static data");
+            testimonials = [...testimonials, ...apiData];
+        } else {
+            console.log("Using static fallback data");
+        }
+
+        function getTestimonialDate(testimonial) {
+            const date =
+                testimonial.timestamp ||
+                testimonial.Timestamp ||
+                testimonial.date ||
+                testimonial.Date ||
+                testimonial.createdAt ||
+                testimonial.created_at ||
+                testimonial["Timestamp"];
+
+            if (!date) return 0;
+
+            const parsedDate = new Date(date).getTime();
+            return Number.isNaN(parsedDate) ? 0 : parsedDate;
+        }
+
+        testimonials.sort((a, b) => {
+            return getTestimonialDate(b) - getTestimonialDate(a);
+        });
+
+        console.log("Testimonials sorted by newest first");
+        console.log(`Total testimonials to display: ${testimonials.length}`);
+
+        // Render testimonials
+        renderTestimonials();
+
+        // Initialize pagination
+        initPagination();
+
+    } catch (error) {
+        console.error("Testimonials initialization failed:", error);
+    } finally {
+        // ALWAYS remove loader after rendering/failure
+        hideTestimonialsLoader();
+
+        console.log("Done!");
+    }
 });
 

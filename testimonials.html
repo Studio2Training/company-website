@@ -52,6 +52,8 @@
 	</div>
 	<!-- Preloader End -->
 
+
+
     <!-- Header Start -->
     <header class="main-header bg-section">
         <div class="header-sticky">
@@ -99,7 +101,7 @@
                         <div class="nav-menu-wrapper">
                             <ul class="navbar-nav mr-auto" id="menu">
                                 <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                                <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                                <li class="nav-item"><a class="nav-link" href="about.html">About Trainer</a></li>
                                 <li class="nav-item"><a class="nav-link" href="personal-training.html">Personal Training</a></li>
                                 <li class="nav-item"><a class="nav-link" href="fitness-tips.html">Fitness Tips</a></li>
                                 <li class="nav-item"><a class="nav-link" href="testimonials.html">Testimonials</a></li>
@@ -160,6 +162,13 @@
         </div>
     </div>
 
+    <!-- Testimonial Loading -->
+    <div id="testimonialLoading" class="testimonial-loading">
+        <div class="testimonial-loader"></div>
+        <p>Loading testimonials...</p>
+    </div>
+
+
     <div class="d-flex justify-content-center align-items-center mb-5">
         <div class="center-btn-wrapper">
             <a href="testimonial-form.html"
@@ -169,6 +178,7 @@
             </a>
         </div>
     </div>
+    
     <style>
         .btn-white-black {
             display: inline-flex;
@@ -414,7 +424,7 @@
                             <div class="footer-menu">
                                 <ul>
                                     <li><a href="index.html">home</a></li>
-                                    <li><a href="about.html">about us</a></li>
+                                    <li><a href="about.html">About Trainer</a></li>
                                     <li><a href="personal-training.html">personal training</a></li>
                                     <li><a href="fitness-tips.html">fitness tips</a></li>
                                     <li><a href="testimonials.html">testimonials</a></li>
@@ -493,6 +503,131 @@
         <!-- Footer Copyright End -->
     </footer>
     <!-- Main Footer Section End -->
+
+
+    <!-- Testimonial Read More Modal -->
+    <div class="testimonial-modal" id="testimonialModal"
+        aria-hidden="true">
+        <div class="testimonial-modal-backdrop"></div>
+
+        <div class="testimonial-modal-box"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="testimonialModalTitle">
+
+            <button class="testimonial-modal-close"
+                    id="testimonialModalClose"
+                    aria-label="Close testimonial">
+                &times;
+            </button>
+
+            <div class="testimonial-modal-icon">“</div>
+
+            <p class="testimonial-modal-label">
+                TESTIMONIAL
+            </p>
+
+            <h2 id="testimonialModalTitle">
+                Client Experience
+            </h2>
+
+            <div class="testimonial-modal-stars"
+                id="testimonialModalStars"></div>
+
+            <div class="testimonial-modal-content"
+                id="testimonialModalContent"></div>
+
+            <div class="testimonial-modal-footer">
+                <span id="testimonialModalName"></span>
+                <span id="testimonialModalDate"></span>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+        const modal = document.getElementById("testimonialModal");
+        const closeBtn = document.getElementById("testimonialModalClose");
+
+        const content = document.getElementById("testimonialModalContent");
+        const name = document.getElementById("testimonialModalName");
+        const date = document.getElementById("testimonialModalDate");
+        const stars = document.getElementById("testimonialModalStars");
+
+        if (!modal) return;
+
+        function decodeText(value = "") {
+            try {
+                return decodeURIComponent(value);
+            } catch {
+                return value;
+            }
+        }
+
+        function openModal(button) {
+            const clientName = decodeText(button.dataset.name || "");
+
+            content.textContent = decodeText(button.dataset.fullText || "");
+            name.textContent = clientName;
+            date.textContent = decodeText(button.dataset.date || "");
+
+            // Show the client's name as the large heading
+            document.getElementById("testimonialModalTitle").textContent =
+                clientName || "Client Experience";
+
+            const rating = Math.max(
+                0,
+                Math.min(5, Number(button.dataset.rating) || 0)
+            );
+
+            stars.textContent = "★".repeat(rating) + "☆".repeat(5 - rating);
+
+            modal.classList.add("active");
+            modal.setAttribute("aria-hidden", "false");
+            document.body.style.overflow = "hidden";
+
+            closeBtn.focus();
+        }
+
+        function closeModal() {
+            modal.classList.remove("active");
+            modal.setAttribute("aria-hidden", "true");
+            document.body.style.overflow = "";
+        }
+
+        // Delegated click supports dynamically rendered testimonial cards
+        document.addEventListener("click", (event) => {
+            const button = event.target.closest(".readmore-btn");
+
+            if (!button) return;
+
+            event.preventDefault();
+            openModal(button);
+        });
+
+        closeBtn.addEventListener("click", closeModal);
+
+        // Close when clicking outside the modal box
+        modal.addEventListener("click", (event) => {
+            if (
+                event.target === modal ||
+                event.target.classList.contains("testimonial-modal-backdrop")
+            ) {
+                closeModal();
+            }
+        });
+
+        // Close with Escape key
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape" && modal.classList.contains("active")) {
+                closeModal();
+            }
+        });
+    });
+    </script>
+
+
 
     <!-- Jquery Library File -->
     <script src="js/jquery-3.7.1.min.js"></script>

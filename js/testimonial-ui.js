@@ -72,23 +72,3 @@ function initPagination() {
 
   showPage(1);
 }
-
-/* READ MORE TOGGLE (event delegation – works for dynamic cards) */
-document.addEventListener("click", function (e) {
-  if (!e.target.classList.contains("toggle-text")) return;
-
-  const card = e.target.closest(".post-item");
-  if (!card) return;
-
-  const shortText = card.querySelector(".short-text");
-  const fullText = card.querySelector(".full-text");
-
-  if (!shortText || !fullText) return;
-
-  const expanded = fullText.style.display === "block";
-
-  shortText.style.display = expanded ? "block" : "none";
-  fullText.style.display = expanded ? "none" : "block";
-
-  e.target.textContent = expanded ? "Read more →" : "Show less";
-});

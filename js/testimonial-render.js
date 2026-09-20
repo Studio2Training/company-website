@@ -51,84 +51,180 @@ function formatTime(timestamp) {
 
 
 // Render testimonials to the DOM
+// Render testimonials to the DOM
 function renderTestimonials() {
-  const container = document.getElementById("testimonialContainer");
-  if (!container) {
-    console.error("testimonialContainer element not found!");
-    return;
-  }
+    const container = document.getElementById("testimonialContainer");
+    const loader = document.getElementById("testimonialLoading");
 
-  if (!testimonials || testimonials.length === 0) {
-    container.innerHTML = '<p class="empty">No testimonials available.</p>';
-    return;
-  }
+    if (!container) {
+        console.error("testimonialContainer element not found!");
 
-  container.innerHTML = "";
+        // Hide loader even if container is missing
+        if (loader) {
+            loader.remove();
+        }
 
-  testimonials.forEach((t, i) => {
-    // Flexible field mapping
-    const name = getField(t, "name", "Name") || "Anonymous";
-    const place = getField(t, "place", "Place");
-    const designation = getField(t, "designation", "Designation");
-    const mode = getField(t, "mode", "Mode");
-    const rating = Number(getField(t, "rating", "Rating")) || 5;
+        return;
+    }
 
-    // Timestamp → Date & Time
-    const rawTimestamp = getField(t, "timestamp", "Timestamp");
-    const date = formatDate(rawTimestamp);
-    const time = formatTime(rawTimestamp);
+    if (!testimonials || testimonials.length === 0) {
+        container.innerHTML = '<p class="empty">No testimonials available.</p>';
 
-    const fullText = getField(t, "review", "Review", "full") || "";
-    const shortText = makeShort(fullText);
+        // Remove loading animation
+        if (loader) {
+            loader.remove();
+        }
 
-    container.innerHTML += `
-      <div class="col-lg-4 col-md-6 testimonial-card">
-        <div class="post-item wow fadeInUp" data-wow-delay="${i * 0.1}s">
+        return;
+    }
 
-          <!-- Rating -->
-          <div class="post-featured-image">
-            <figure class="image-anime">
-              <div class="rating">${renderStars(rating)}</div>
+    container.innerHTML = "";
 
-              ${shortText ? `<p class="short-text">${shortText}</p>` : ""}
-              ${fullText ? `<p class="full-text" style="display:none;">${fullText}</p>` : ""}
-            </figure>
-          </div>
+    testimonials.forEach((t, i) => {
 
-          <div class="post-item-body">
-            <div class="post-item-content">
+        // Flexible field mapping
+        const name = getField(t, "name", "Name") || "Anonymous";
+        const place = getField(t, "place", "Place");
+        const designation = getField(t, "designation", "Designation");
+        const mode = getField(t, "mode", "Mode");
+        const rating = Number(getField(t, "rating", "Rating")) || 5;
 
-              <!-- Top row: Name (left) + District (right) -->
-              <div class="top-row">
-                <h3>${name}</h3>
+        // Timestamp → Date & Time
+        const rawTimestamp = getField(t, "timestamp", "Timestamp");
+        const date = formatDate(rawTimestamp);
+        const time = formatTime(rawTimestamp);
 
-                <div class="right-info">
-                  ${place ? `<div class="place">${place}</div>` : ""}
-                  ${(date || time) ? `
-                    <div class="testimonial-datetime">
-                      ${date ? `<span class="date">${date}</span>` : ""}
-                      ${time ? `<span class="time">${time}</span>` : ""}
+        const fullText = getField(t, "review", "Review", "full") || "";
+        const shortText = makeShort(fullText);
+
+        container.innerHTML += `
+            <div class="col-lg-4 col-md-6 testimonial-card">
+
+                <div class="post-item wow fadeInUp"
+                     data-wow-delay="${i * 0.1}s">
+
+                    <!-- Rating -->
+                    <div class="post-featured-image">
+
+                        <figure class="image-anime">
+
+                            <div class="rating">
+                                ${renderStars(rating)}
+                            </div>
+
+                            ${shortText
+                                ? `<p class="short-text">${shortText}</p>`
+                                : ""
+                            }
+
+                            ${fullText
+                                ? `<p class="full-text" style="display:none;">
+                                    ${fullText}
+                                   </p>`
+                                : ""
+                            }
+
+                        </figure>
+
                     </div>
-                  ` : ""}
-                </div>
-              </div>
 
-              <!-- Left stacked info -->
-              ${designation ? `<p class="meta designation"><strong>${designation}</strong></p>` : ""}
-              ${mode ? `<p class="meta mode">Mode: ${mode}</p>` : ""}
+                    <div class="post-item-body">
+
+                        <div class="post-item-content">
+
+                            <!-- Top row -->
+                            <div class="top-row">
+
+                                <h3>${name}</h3>
+
+                                <div class="right-info">
+
+                                    ${place
+                                        ? `<div class="place">${place}</div>`
+                                        : ""
+                                    }
+
+                                    ${(date || time)
+                                        ? `
+                                            <div class="testimonial-datetime">
+
+                                                ${date
+                                                    ? `<span class="date">${date}</span>`
+                                                    : ""
+                                                }
+
+                                                ${time
+                                                    ? `<span class="time">${time}</span>`
+                                                    : ""
+                                                }
+
+                                            </div>
+                                          `
+                                        : ""
+                                    }
+
+                                </div>
+
+                            </div>
+
+                            <!-- Left stacked info -->
+
+                            ${designation
+                                ? `
+                                    <p class="meta designation">
+                                        <strong>${designation}</strong>
+                                    </p>
+                                  `
+                                : ""
+                            }
+
+                            ${mode
+                                ? `
+                                    <p class="meta mode">
+                                        Mode: ${mode}
+                                    </p>
+                                  `
+                                : ""
+                            }
+
+                        </div>
+
+                        ${
+                            fullText.length > shortText.length
+                                ? `
+                                    <div class="post-item-btn">
+
+                                        <button
+                                            type="button"
+                                            class="readmore-btn"
+                                            data-full-text="${encodeURIComponent(fullText)}"
+                                            data-name="${encodeURIComponent(name)}"
+                                            data-date="${encodeURIComponent(date || "")}"
+                                            data-rating="${rating}"
+                                        >
+                                            Read more
+                                        </button>
+
+                                    </div>
+                                  `
+                                : ""
+                        }
+
+                    </div>
+
+                </div>
 
             </div>
-            ${
-              fullText.length > shortText.length
-                ? `<div class="post-item-btn">
-                     <a class="readmore-btn toggle-text">Read more →</a>
-                   </div>`
-                : ""
-            }
-          </div>
+        `;
+    });
 
-        </div>
-      </div>
-    `;
-  });
+    // ============================================
+    // IMPORTANT:
+    // Remove loading animation AFTER rendering
+    // ============================================
+
+    if (loader) {
+        loader.remove();
+        console.log("Testimonials loaded - loading animation removed.");
+    }
 }
